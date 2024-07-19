@@ -1,0 +1,249 @@
+#app {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary-6);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-5);
+}
+
+
+@media (max-width: 600px) {
+    html {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+    }
+}
+
+
+
+
+/**/
+
+
+
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../public/assets/font/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../public/assets/font/Ubuntu/Ubuntu-Light.ttf') format('truetype');
+    font-weight: light;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../public/assets/font/Ubuntu/Ubuntu-Medium.ttf') format('truetype');
+    font-weight: medium;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../public/assets/font/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: regular;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('../public/assets/font/Lora/Lora-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lora';
+    src: url('../public/assets/font/Lora/Lora-Medium.ttf') format('truetype');
+    font-weight: medium;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lora';
+    src: url('../public/assets/font/Lora/Lora-Regular.ttf') format('truetype');
+    font-weight: regular;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lora';
+    src: url('../public/assets/font/Lora/Lora-SemiBold.ttf') format('truetype');
+    font-weight: semibold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('../public/assets/font/JosefinSans/JosefinSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('../public/assets/font/JosefinSans/JosefinSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('../public/assets/font/JosefinSans/JosefinSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('../public/assets/font/JosefinSans/JosefinSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('../public/assets/font/JosefinSans/JosefinSans-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'BarlowCondensed';
+    src: url('../public/assets/font/BarlowCondensed/BarlowCondensed-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BarlowCondensed';
+    src: url('../public/assets/font/BarlowCondensed/BarlowCondensed-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BarlowCondensed';
+    src: url('../public/assets/font/BarlowCondensed/BarlowCondensed-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BarlowCondensed';
+    src: url('../public/assets/font/BarlowCondensed/BarlowCondensed-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('../public/assets/font/PlusJakartaSans/PlusJakartaSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('../public/assets/font/PlusJakartaSans/PlusJakartaSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('../public/assets/font/PlusJakartaSans/PlusJakartaSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans';
+    src: url('../public/assets/font/PlusJakartaSans/PlusJakartaSans-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../public/assets/font/Urbanist/Urbanist-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../public/assets/font/Urbanist/Urbanist-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../public/assets/font/Urbanist/Urbanist-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../public/assets/font/Urbanist/Urbanist-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MarkaziText';
+    src: url('../public/assets/font/MarkaziText/MarkaziText-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MarkaziText';
+    src: url('../public/assets/font/MarkaziText/MarkaziText-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MarkaziText';
+    src: url('../public/assets/font/MarkaziText/MarkaziText-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MarkaziText';
+    src: url('../public/assets/font/MarkaziText/MarkaziText-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}

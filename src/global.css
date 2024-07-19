@@ -1,0 +1,58 @@
+:root {
+  --background: #fff;
+  --background-secondary: #f9f8ff;
+  --background-input: #f4f3ff;
+  --background-alert: #ebebff;
+  --background-chatbot: #f0f2f5f7;
+
+  --background-banner: rgb(241, 238, 252);
+
+  --background-modal: #ffffff;
+  --overlay: rgb(231 231 231 / 90%);
+
+  --text-primary: #000000;
+  --text-color: #060510;
+  --text-color-secondary: #231d4f;
+  --label-color: #d5d4dc;
+  /* --border-color: rgb(217, 218, 221); */
+  --border-color: var(--color-primary-6);
+
+  --color-primary-0: #000000;
+  --color-primary-1: #242424;
+  --color-primary-2: #494949;
+  --color-primary-3: #6d6d6d;
+  --color-primary-4: #929292;
+  --color-primary-5: #b6b6b6;
+  --color-primary-6: #dbdbdb;
+  --color-primary-7: #ffffff;
+}
+
+
+body.dark-mode {
+  --background: #000;
+  --background-secondary: #0b0b0b;
+  --background-input: #151515;
+  --background-alert: #12122a;
+  --background-chatbot: #0e0e0ef7;
+
+  --background-banner: #1b1b1b;
+
+  --background-modal: #000;
+  --overlay: #010101b3;
+
+  --text-primary: #fff3f3;
+  --text-color: #fff;
+  --text-color-secondary: #c3c3c3;
+  --label-color: #d5d4dc;
+  /* --border-color: #212121; */
+  --border-color: var(--color-primary-6);
+
+  --color-primary-0: #000fff;
+  --color-primary-1: #000ddb;
+  --color-primary-2: #000bb6;
+  --color-primary-3: #000992;
+  --color-primary-4: #00066d;
+  --color-primary-5: #000449;
+  --color-primary-6: #000224;
+  --color-primary-7: #000000;
+}

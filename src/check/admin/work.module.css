@@ -1,0 +1,29 @@
+.workContainer {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.clientsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.clientsTable th,
+.clientsTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.clientsTable th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.clientsTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.clientsTable tr:hover {
+    background-color: #ddd;
+}
