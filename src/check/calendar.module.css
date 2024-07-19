@@ -1,0 +1,80 @@
+.calendarMonth {
+
+    th,
+    td {
+        width: calc(100%/7);
+    }
+
+    th {
+        text-align: center;
+        border-bottom: none;
+        /* background: var(--color-primary-6); */
+        color: var(--color-primary-0);
+        border-color: var(--color-primary-6);
+        font-size: 11px;
+        padding-top: 2px;
+    }
+
+    td {
+        border-top: none;
+        height: calc((100vh/5) - 26px);
+
+        .day {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+
+            b {
+                font-size: 14px;
+                font-weight: 800;
+            }
+
+            ul {
+                display: inline-flex;
+                flex-direction: column;
+
+                li {
+                    display: block;
+                    display: inline-flex;
+                    align-items: center;
+
+                    .dot {
+                        min-width: 12px;
+                        min-height: 12px;
+                        border-radius: 50%;
+                        background: var(--border-color);
+
+                        &.active {
+                            background: var(--color-primary-0);
+                        }
+                    }
+
+                    .info {
+                        width: 100%;
+                        overflow: hidden;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        overflow-x: scroll;
+                        width: calc(100% - 20px);
+                        &::-webkit-scrollbar{
+                            display: none;
+                        }
+                        span {
+                            font-size: 12px;
+                            font-weight: 400;
+                        }
+
+                        b {
+                            font-size: 14px;
+                            font-weight: 600;
+                            /* text-wrap: nowrap; */
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

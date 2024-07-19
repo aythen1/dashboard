@@ -1,0 +1,348 @@
+import apiBackend from '@/utils/services/apiBackend'
+import {
+  setSelectedChat,
+  setSelectedContact,
+  updateChat,
+  changeActiveComponent,
+  setSelectedChatUsername,
+  setAllMessages,
+  setNewChatSelected,
+  setNewChatUsername,
+  setJoinedVideoChat,
+  setSocketId,
+  setSelectedChatAdmin,
+  setOnChatSection,
+  setUserVideoRef,
+  setOutsideChatSection,
+  settingPeers,
+  setJoinTime
+} from '../slices/chatSlices'
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
+export const getAllChatsByUserId = createAsyncThunk(
+  'chats/getAllChatsByUserId',
+  async (userId) => {
+    try {
+      if (!userId) {
+        return []
+      }
+      const { data } = await apiBackend.get(`/v1/chat/${userId}/all-chats`)
+      return data.data
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+)
+
+export const getAllUsers = createAsyncThunk('chats/getAllUsers', async () => {
+  try {
+    const { data } = await apiBackend.get('/v1/user')
+    return data.data
+  } catch (error) {
+    throw new Error(error)
+  }
+})
+
+export const getAllProjectIds = createAsyncThunk(
+  'chats/getAllProjectIds',
+  async (chatId) => {
+    try {
+      const { data } = await apiBackend.get(`/v1/chat/${chatId}/all-users`)
+      return data.data
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+)
+
+// export const getAllChatsByUserId = (userId) => async (dispatch) => {
+//   try {
+//     const { data } = await apiBackend.get(`/v1/chat/${userId}/all-chats`)
+//     // console.log(data.data)
+//     dispatch(getAllChats(data.data))
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+export const getAllMessagesByChat = createAsyncThunk(
+  'chats/getAllMessagesByChat',
+  async (chatId) => {
+    try {
+      const { data } = await apiBackend.get(`/v1/chat/${chatId}/all-messages`)
+      return data.data
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+)
+// export const getAllMessagesByChat = (chatId) => async (dispatch) => {
+//   try {
+//     const { data } = await apiBackend.get(`/v1/chat/${chatId}/all-messages`)
+//     return data.data
+//   } catch (error) {
+//     throw new Error(error)
+//   }
+// }
+export const setUserSocketId = (socketId) => async (dispatch) => {
+  try {
+    dispatch(setSocketId(socketId))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const setSelectedChatAdminStatus =
+  (selectedChat, userId) => async (dispatch) => {
+    try {
+      const { data } = await apiBackend.get(
+        `/v1/chat/${selectedChat}/all-users`
+      )
+      const currentUser = data.data.filter((user) => user.userToolId === userId)
+      dispatch(setSelectedChatAdmin(currentUser[0].isAdmin))
+    } catch (error) {
+      console.log(error)
+    }
+  }
+export const selectChat = (chatId, username) => async (dispatch) => {
+  try {
+    dispatch(setJoinedVideoChat(null))
+    dispatch(setAllMessages([]))
+    dispatch(setNewChatSelected(null))
+    dispatch(setNewChatUsername(null))
+    dispatch(setSelectedChat(chatId))
+    dispatch(setSelectedChatUsername(username))
+    chatId && dispatch(getAllProjectIds(chatId))
+    chatId && dispatch(getAllMessagesByChat(chatId))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const selectNewChat = (userId, userName) => async (dispatch) => {
+  try {
+    dispatch(setNewChatSelected(userId))
+    dispatch(setNewChatUsername(userName))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const selectContact = (contactId) => async (dispatch) => {
+  try {
+    dispatch(setSelectedContact(contactId))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const joinVideoChat = () => async (dispatch) => {
+  try {
+    dispatch(setJoinedVideoChat(true))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const joinedChatSection = () => async (dispatch) => {
+  try {
+    dispatch(setOnChatSection())
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const setHourJoined = (hour) => async (dispatch) => {
+  try {
+    dispatch(setJoinTime(hour))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const leavingChatSection = () => async (dispatch) => {
+  try {
+    dispatch(setOutsideChatSection())
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const setPeers = (peers) => async (dispatch) => {
+  try {
+    dispatch(settingPeers(peers))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const leaveVideoChat = () => async (dispatch) => {
+  try {
+    dispatch(setJoinedVideoChat(null))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getChatByParticipant = createAsyncThunk(
+  'chats/getChatByParticipant',
+  async (participants) => {
+    try {
+      const { data } = await apiBackend.get('/v1/chat/users-chat', participants)
+      if (data.data.id) {
+        return data.data.id
+      }
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+)
+
+// export const getChatByParticipant = (participants) => async (dispatch) => {
+//   try {
+//     const { data } = await apiBackend.get('/v1/chat/users-chat', participants)
+//     if (data.data.id) {
+//       return data.data.id
+//     }
+//   } catch (error) {
+//     throw new Error(error)
+//   }
+// }
+
+export const updateLastMessage = (message) => async (dispatch) => {
+  try {
+    dispatch(updateChat(message))
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const setUserVideoReference = (ref) => async (dispatch) => {
+  try {
+    console.log('setting ref to: ', ref)
+    dispatch(setUserVideoRef(ref))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const createChat = createAsyncThunk(
+  'chats/createChat',
+  async (participants) => {
+    try {
+      const { data } = await apiBackend.post('/v1/chat/new', participants)
+      return data.data.chatId
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+)
+export const createChatAndSendMessage =
+  (participants, bodyMessage, userName, userId) => async (dispatch) => {
+    try {
+      const response = await apiBackend.post('/v1/chat/new', participants)
+      const id = response.data.data.id
+      // eslint-disable-next-line no-unused-vars
+      const messageResponse = await apiBackend.post(
+        `/v1/chat/${id}/new-message`,
+        bodyMessage
+      )
+      dispatch(getAllChatsByUserId(userId))
+      dispatch(getAllMessagesByChat(id))
+      dispatch(selectChat(id, userName))
+    } catch (error) {
+      console.error('Error creating chat:', error)
+    }
+  }
+
+// export const createChat = (participants) => async (dispatch) => {
+//   try {
+//     const { data } = await apiBackend.post('/v1/chat/new', participants)
+//     return data.data.chatId
+//   } catch (error) {
+//     throw new Error(error)
+//   }
+// }
+export const sendMessage = (chatId, bodyMessage) => async (dispatch) => {
+  try {
+    const { data } = await apiBackend.post(
+      `/v1/chat/${chatId}/new-message`,
+      bodyMessage
+    )
+    dispatch(updateChat(data.data))
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const setMessagesToReaded = (chatId, userId) => async (dispatch) => {
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const { data } = await apiBackend.post(`/v1/chat/${chatId}/read-message`, {
+      userId
+    })
+    dispatch(getAllMessagesByChat(chatId))
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const deletechat = (chatId, bodyMessage, userId) => async (dispatch) => {
+  try {
+    await apiBackend.patch(`/v1/chat/${chatId}/delete-chat`, bodyMessage)
+    dispatch(selectChat(null, null))
+    dispatch(getAllChatsByUserId(userId))
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const activeComp = (component) => (dispatch) => {
+  dispatch(changeActiveComponent(component))
+}
+// creatorId = id usuario que crea el grupo / se saca de localstorage
+// participants = tiene que llevar id de usuarios que participan  en el echat y agregar id de creator id
+// export const createGroup = createAsyncThunk(
+//   'chats/createGroup',
+//   async (chatName, creatorId, participantsIds) => {
+//     try {
+//       const { data } = await apiBackend.post('/v1/chat/new-group', {
+//         chatName,
+//         creatorId,
+//         participantsIds
+//       })
+//       return data.data.id
+//     } catch (error) {
+//       throw new Error(error)
+//     }
+//   }
+// )
+export const createGroup =
+  (chatName, creatorId, participantIds, meetingStartDate) =>
+  async (dispatch) => {
+    try {
+      const { data } = await apiBackend.post('/v1/chat/new-group', {
+        chatName,
+        creatorId,
+        participantIds,
+        meetingStartDate
+      })
+      dispatch(getAllChatsByUserId(creatorId))
+      dispatch(getAllMessagesByChat(data.data.id))
+      dispatch(selectChat(data.data.id, data.data.name))
+      return data.data
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+export const createGroup2 =
+  (chatName, creatorId, participantIds, image) => async (dispatch) => {
+    try {
+      const formData = new FormData()
+      formData.append('chatName', chatName)
+      formData.append('creatorId', creatorId)
+      formData.append('participantIds', participantIds)
+      formData.append('image', image)
+      const { data } = await apiBackend.post('/v1/chat/new-group', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      dispatch(getAllChatsByUserId(creatorId))
+      dispatch(getAllMessagesByChat(data.data.id))
+      dispatch(selectChat(data.data.id, data.data.name))
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
